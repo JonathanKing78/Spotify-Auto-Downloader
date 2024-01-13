@@ -1,14 +1,13 @@
-from dotenv import load_dotenv
-load_dotenv()
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
+import flask
+from flask import Flask, render_template
 
-scope = "user-library-read"
+app = Flask(__name__)
+@app.route("/")
+def index():
+    return render_template("index.html")
 
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
+@app.route("/hi")
+def start():
+    return "Hello World"
 
-
-results = sp.current_user_saved_tracks(50, 0)
-for idx, item in enumerate(results['items']):
-    track = item['track']
-    print(idx, track['artists'][0]['name'], " – ", track['name'])
+app.run(debug=True)
