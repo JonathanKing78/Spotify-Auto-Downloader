@@ -12,7 +12,7 @@ load_dotenv()
 
 #Path to save music to(replace with the path you want your music saved to)
 path = r"C:\Users\Jonathan King\Documents\Spotify Songs"
-extension_path = r"Extensions\AdBlock — best ad blocker 5.17.1.0.zip"
+extension_path = r"C:\Users\Jonathan King\Documents\Self Teaching\Python\Projects\Spoofy-Auto-Download\Extensions\AddBlocker.crx"
 
 #checks to see if path exists if it doesn't it creates the folder to save the files in
 if not os.path.exists(path):
@@ -21,7 +21,12 @@ if not os.path.exists(path):
 #download automation    
 scope = "user-library-read"
 chrome_options = Options()
-chrome_options.add_extension(extension_path)
+installed = False
+try:
+    chrome_options.add_extension(extension_path)
+    installed = True
+except OSError:
+    pass
 driver = webdriver.Chrome(options=chrome_options)
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
 delim=0
@@ -44,7 +49,7 @@ while results['items']:
         element.clear()
         element.send_keys(songURL)
         submitbutton.click()
-        sleep(10)
+        sleep(5)
         downloadbutton = driver.find_element(By.XPATH, "//span[text()='Download Mp3']")
         downloadbutton.click()
      
