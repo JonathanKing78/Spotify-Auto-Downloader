@@ -6,6 +6,8 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 from pyautogui import click, locateCenterOnScreen, ImageNotFoundException
 load_dotenv()
@@ -50,6 +52,7 @@ while results['items']:
         element.send_keys(songURL)
         submitbutton.click()
         sleep(5)
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//span[text()='Download Mp3']")))
         downloadbutton = driver.find_element(By.XPATH, "//span[text()='Download Mp3']")
         downloadbutton.click()
      
