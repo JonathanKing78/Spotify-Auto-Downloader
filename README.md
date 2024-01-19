@@ -30,6 +30,10 @@
             SPOTIPY_CLIENT_SECRET='your_clientSecret'
             SPOTIPY_REDIRECT_URI='http://localhost/callback'
 
+- Replace 'your_clientID' with the Client ID you got from the spotify developer site.
+
+- Replace 'your_clientSecret' with the Client secrete you got from the spotify developer site.
+
 - On line 14 of main.py you need to replace C:\Users\Jonathan King\Documents\Spotify Songs with the path you want the songs to be downloaded in
 
 - On line 15 of main.py you need to replace C:\Users\Jonathan King\Documents\Self Teaching\Python\Projects\Spoofy-Auto-Download\Extensions\AddBlocker.crx with the **absolute path** for the AddBlocker.crx file within the extension folder.
